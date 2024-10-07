@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import flutter_screenutil
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/chatting_list_controller.dart';
 
@@ -61,9 +62,12 @@ void _showPopupMenu(BuildContext context, Offset position) async {
                 ),
              title: Row(
 children: [
+ 
+  Image.asset("assets/menu.png", height: 20.h,), 
+
   Text(
     'All Channels',
-    style: TextStyle(
+    style: GoogleFonts.montserrat(
       color: Colors.black, fontSize: 18.sp), // Responsive text size
   ),
   GestureDetector(
@@ -88,11 +92,33 @@ children: [
                     onPressed: () {
                       controller.toggleMultiSelect(); // Toggle state using controller
                     },
-                    icon: Icon(Icons.select_all,
-                        color: Colors.pink, size: 24.sp), // Responsive icon size
+                    icon: Image.asset('assets/multiselector.png', width: 55.sp, height: 55.sp,),
                   ),
                 ],
               ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               backgroundColor: Colors.white,
               body: Column(
                 children: [
@@ -134,6 +160,7 @@ children: [
                           '10:27 PM',
                           Colors.purpleAccent,
                           Icons.done_all,
+                          'assets/whatsapp9.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -143,6 +170,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                           'assets/whatsapp9.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -152,6 +180,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/messenger2.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -161,6 +190,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/whatsapp9.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -170,6 +200,8 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.telegram_outlined,
+                          'assets/messenger2.png'
+
                         ),
                                  _buildChatItem(
                           context,
@@ -179,6 +211,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/messenger2.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -188,6 +221,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/whatsapp9.png'
                         ),
                                  _buildChatItem(
                           context,
@@ -197,6 +231,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/whatsapp9.png'
                         ),
                         _buildChatItem(
                           context,
@@ -206,6 +241,7 @@ children: [
                           '5:20 PM',
                           Colors.green,
                           Icons.message,
+                          'assets/whatsapp9.png'
                         ),
                       ],
                     ),
@@ -302,74 +338,109 @@ children: [
     return Container(
       padding: const EdgeInsets.all(8.0),
       color: Colors.grey[200],
+
+
+
+
+
+
+
+
+
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: const [
-              Icon(Icons.radio_button_checked, color: Colors.pink),
-              SizedBox(width: 8),
-              Text('(0)', style: TextStyle(color: Colors.black)), // Dynamic selection count
-            ],
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Row(
+      children: [
+        Icon(Icons.radio_button_checked, color: Colors.pink, size: 18.w),
+        SizedBox(width: 5.w),
+        Text(
+          '(0)',
+          style: TextStyle(color: Colors.black, fontSize: 14.sp),
+        ),
+        SizedBox(width: 8.w),
+        Icon(
+          Icons.message,
+          color: Colors.pink,
+          size: 18.sp,
+        ),
+      ],
+    ),
+    Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          child: ElevatedButton(
+            onPressed: () {
+              // Handle "Assign to AI" action
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[800],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.r),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+            ),
+            child: Text(
+              'Assign to AI',
+              style: TextStyle(color: Colors.white, fontSize: 12.sp),
+            ),
           ),
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  controller.toggleMultiSelect(); // Close the multi-select row
-                },
-                icon: const Icon(Icons.message, color: Colors.pink, size: 13),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
+          child: ElevatedButton(
+            onPressed: () {
+              // Handle "Assign to Team" action
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey[800],
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.r),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle "Assign to AI" action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[800], // Dark button background
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: const Text(
-                    'Assign to AI',
-                    style: TextStyle(color: Colors.white, fontSize: 8),
-                  ),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  'Assign to Team',
+                  style: TextStyle(color: Colors.white, fontSize: 12.sp),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Handle "Assign to Team" action
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[800], // Dark button background
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                    children: const [
-                      Text('Assign to Team', style: TextStyle(color: Colors.white, fontSize: 8)),
-                      Icon(Icons.arrow_drop_down, color: Colors.white),
-                    ],
-                  ),
+                Icon(
+                  Icons.arrow_drop_down,
+                  color: Colors.white,
+                  size: 16.sp,
                 ),
-              ),
-              IconButton(
-                onPressed: () {
-                  controller.toggleMultiSelect(); // Close the multi-select row
-                },
-                icon: const Icon(Icons.close, color: Colors.pink, size: 13),
-              ),
-            ],
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+        IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            controller.toggleMultiSelect();
+          },
+          icon: Icon(
+            Icons.close,
+            color: Colors.pink,
+            size: 16.sp,
+          ),
+        ),
+      ],
+    ),
+  ],
+), 
+
     );
   }
+
+
+
+
+
+
+
+  
 
   Widget _buildChatItem(
     BuildContext context,
@@ -379,118 +450,120 @@ children: [
     String time,
     Color statusColor,
     IconData statusIcon,
-  ) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w), // Responsive padding
-      child: Row(
-        children: [
-          // Avatar
-          CircleAvatar(
-            backgroundImage: AssetImage(avatarPath),
-            radius: 25.r, // Responsive avatar size
-          ),
-          SizedBox(width: 12.w), // Responsive space between avatar and content
+    String image, 
+  ) {return GestureDetector(
+  onTap: () {
+    Get.toNamed('/chating');
+  },
+  child: Padding(
+    padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w), // Responsive padding
+    child: Row(
+      children: [
+        // Avatar
+        CircleAvatar(
+          backgroundImage: AssetImage(avatarPath),
+          radius: 25.r, // Responsive avatar size
+        ),
+        SizedBox(width: 12.w), // Responsive space between avatar and content
 
-          // Name, last message, and badges
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Row with Name and Status Badges
-                Row(
-                  children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12.sp, // Responsive text
-                      ),
-                    ),
-                    SizedBox(width: 5.w), // Space between name and badge
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h), // Badge padding
-                      decoration: BoxDecoration(
-                        color: Colors.orange[100], // Badge background color
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.orange, size: 10.sp), // Badge icon
-                          SizedBox(width: 2.w),
-                          Text(
-                            'Issac', // Dynamic badge content
-                            style: TextStyle(
-                              fontSize: 10.sp,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                // Last message text
-              Row(
-  children: [
-    Icon(Icons.done_all),
-    SizedBox(width: 3,),
-    Text(
-      _getFirstTwoWords(lastMessage),
-      style: TextStyle(
-        fontSize: 12.sp,
-        color: Colors.grey[600], // Grey color for last message
-      ),
-      maxLines: 1, // Limit message to 1 line
-      overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
-    ),
-  ],
-),
-
-              ],
-            ),
-          ),
-          SizedBox(width: 8.w), // Space between text and time/status icons
-          // Time and Status Icons
-          Column(
+        // Name, last message, and badges
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Row with Name and Status Badges
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-                    decoration: BoxDecoration(
-                      color: Colors.green[100], // Background color for the status badge
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Text(
-                      '16h', // Dynamic status duration
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.green,
-                      ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.sp, // Responsive text
                     ),
                   ),
-                   Text(
-                time,
-                style: TextStyle(color: Colors.grey, fontSize: 12.sp), // Time text
-              ),
+                  SizedBox(width: 5.w), // Space between name and badge
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h), // Badge padding
+                    decoration: BoxDecoration(
+                      color: Colors.orange[100], // Badge background color
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.circle, color: Colors.orange, size: 10.sp), // Badge icon
+                        SizedBox(width: 2.w),
+                        Text(
+                          'Issac', // Dynamic badge content
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Icon(Icons.call_received, color: statusColor, size: 17.sp),
-                    Icon(statusIcon, color: statusColor, size: 17.sp),
-                 ],
-               ), 
+              // Last message text
+              Row(
+                children: [
+                  Icon(Icons.done_all),
+                  SizedBox(width: 3),
+                  Text(
+                    _getFirstTwoWords(lastMessage),
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.grey[600], // Grey color for last message
+                    ),
+                    maxLines: 1, // Limit message to 1 line
+                    overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
+                  ),
+                ],
+              ),
             ],
           ),
-          // SizedBox(height: 4.h), // Space between status and time
-         
-          SizedBox(width: 12.w), // Space between time and action icon
-          // Action Icon (e.g., WhatsApp)
-         // Responsive action icon
-        ],
-      ),
-    );
+        ),
+        SizedBox(width: 8.w), // Space between text and time/status icons
+        // Time and Status Icons
+        Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+                  decoration: BoxDecoration(
+                    color: Colors.green[100], // Background color for the status badge
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Text(
+                    '16h', // Dynamic status duration
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.green,
+                    ),
+                  ),
+                ),
+                Text(
+                  time,
+                  style: TextStyle(color: Colors.grey, fontSize: 12.sp), // Time text
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.call_received, color: statusColor, size: 17.sp),
+                Image.asset(image, color: statusColor, height: 17.h,  fit: BoxFit.contain,),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(width: 12.w), // Space between time and action icon
+        // Action Icon (e.g., WhatsApp)
+        // Responsive action icon
+      ],
+    ),
+  ),
+);
   }
 }
