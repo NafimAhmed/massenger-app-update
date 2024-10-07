@@ -8,6 +8,7 @@ abstract class Routes {
   // static const LOADING = _Paths.LOADING;
   static const CHATTING_LIST = _Paths.CHATTING_LIST;
   static const CONTACT_DETAIL = _Paths.CONTACT_DETAIL;
+  static const CHATING = _Paths.CHATING;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   // static const LOADING = '/loading';
   static const CHATTING_LIST = '/chatting-list';
   static const CONTACT_DETAIL = '/contact-detail';
+  static const CHATING = '/chating';
 }

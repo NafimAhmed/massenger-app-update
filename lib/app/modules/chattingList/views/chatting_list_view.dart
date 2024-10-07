@@ -379,118 +379,119 @@ children: [
     String time,
     Color statusColor,
     IconData statusIcon,
-  ) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w), // Responsive padding
-      child: Row(
-        children: [
-          // Avatar
-          CircleAvatar(
-            backgroundImage: AssetImage(avatarPath),
-            radius: 25.r, // Responsive avatar size
-          ),
-          SizedBox(width: 12.w), // Responsive space between avatar and content
+  ) {return GestureDetector(
+  onTap: () {
+    Get.toNamed('/chating');
+  },
+  child: Padding(
+    padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w), // Responsive padding
+    child: Row(
+      children: [
+        // Avatar
+        CircleAvatar(
+          backgroundImage: AssetImage(avatarPath),
+          radius: 25.r, // Responsive avatar size
+        ),
+        SizedBox(width: 12.w), // Responsive space between avatar and content
 
-          // Name, last message, and badges
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Row with Name and Status Badges
-                Row(
-                  children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12.sp, // Responsive text
-                      ),
-                    ),
-                    SizedBox(width: 5.w), // Space between name and badge
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h), // Badge padding
-                      decoration: BoxDecoration(
-                        color: Colors.orange[100], // Badge background color
-                        borderRadius: BorderRadius.circular(12.r),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.orange, size: 10.sp), // Badge icon
-                          SizedBox(width: 2.w),
-                          Text(
-                            'Issac', // Dynamic badge content
-                            style: TextStyle(
-                              fontSize: 10.sp,
-                              color: Colors.orange,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                // Last message text
-              Row(
-  children: [
-    Icon(Icons.done_all),
-    SizedBox(width: 3,),
-    Text(
-      _getFirstTwoWords(lastMessage),
-      style: TextStyle(
-        fontSize: 12.sp,
-        color: Colors.grey[600], // Grey color for last message
-      ),
-      maxLines: 1, // Limit message to 1 line
-      overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
-    ),
-  ],
-),
-
-              ],
-            ),
-          ),
-          SizedBox(width: 8.w), // Space between text and time/status icons
-          // Time and Status Icons
-          Column(
+        // Name, last message, and badges
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Row with Name and Status Badges
               Row(
                 children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-                    decoration: BoxDecoration(
-                      color: Colors.green[100], // Background color for the status badge
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Text(
-                      '16h', // Dynamic status duration
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.green,
-                      ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.sp, // Responsive text
                     ),
                   ),
-                   Text(
-                time,
-                style: TextStyle(color: Colors.grey, fontSize: 12.sp), // Time text
-              ),
+                  SizedBox(width: 5.w), // Space between name and badge
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h), // Badge padding
+                    decoration: BoxDecoration(
+                      color: Colors.orange[100], // Badge background color
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.circle, color: Colors.orange, size: 10.sp), // Badge icon
+                        SizedBox(width: 2.w),
+                        Text(
+                          'Issac', // Dynamic badge content
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Icon(Icons.call_received, color: statusColor, size: 17.sp),
-                    Icon(statusIcon, color: statusColor, size: 17.sp),
-                 ],
-               ), 
+              // Last message text
+              Row(
+                children: [
+                  Icon(Icons.done_all),
+                  SizedBox(width: 3),
+                  Text(
+                    _getFirstTwoWords(lastMessage),
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.grey[600], // Grey color for last message
+                    ),
+                    maxLines: 1, // Limit message to 1 line
+                    overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
+                  ),
+                ],
+              ),
             ],
           ),
-          // SizedBox(height: 4.h), // Space between status and time
-         
-          SizedBox(width: 12.w), // Space between time and action icon
-          // Action Icon (e.g., WhatsApp)
-         // Responsive action icon
-        ],
-      ),
-    );
+        ),
+        SizedBox(width: 8.w), // Space between text and time/status icons
+        // Time and Status Icons
+        Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+                  decoration: BoxDecoration(
+                    color: Colors.green[100], // Background color for the status badge
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Text(
+                    '16h', // Dynamic status duration
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.green,
+                    ),
+                  ),
+                ),
+                Text(
+                  time,
+                  style: TextStyle(color: Colors.grey, fontSize: 12.sp), // Time text
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.call_received, color: statusColor, size: 17.sp),
+                Icon(statusIcon, color: statusColor, size: 17.sp),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(width: 12.w), // Space between time and action icon
+        // Action Icon (e.g., WhatsApp)
+        // Responsive action icon
+      ],
+    ),
+  ),
+);
   }
 }
