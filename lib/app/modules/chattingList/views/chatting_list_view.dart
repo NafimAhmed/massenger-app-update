@@ -55,6 +55,7 @@ void _showPopupMenu(BuildContext context, Offset position) async {
                       Get.toNamed(Routes.CONTACT_DETAIL);
                     },
                     child: CircleAvatar(
+                      backgroundColor: Colors.white,
                       backgroundImage: AssetImage('assets/david.png'),
                       radius: 20.r, // Responsive avatar size using flutter_screenutil
                     ),
@@ -76,7 +77,7 @@ children: [
       _showPopupMenu(context, details.globalPosition); // Call to open the custom menu
     },
     child: Icon(
-      Icons.arrow_drop_down_outlined,
+      Icons.keyboard_arrow_down,
       color: Colors.black,
       size: 24.sp,
     ),
@@ -130,17 +131,21 @@ children: [
       Padding(
                     padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
                     child: Container(
+                      alignment: Alignment.center,
+                      height: 45,
                       decoration: BoxDecoration(
                         color: Colors.grey[200], // Background color for the search field
-                        borderRadius: BorderRadius.circular(20.r), // Rounded corners
+                        borderRadius: BorderRadius.circular(8), // Rounded corners
                       ),
                       child: TextField(
                         controller: _searchController,
                         decoration: InputDecoration(
+                          isCollapsed: true,
+                          isDense: true,
                           prefixIcon: Icon(Icons.search, size: 24.sp, color: Colors.grey), // Search icon
                           hintText: 'Search...', // Placeholder text
                           border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(vertical: 12.h),
+                          contentPadding: EdgeInsets.symmetric(vertical: 12),
                         ),
                         onChanged: (value) {
                           // Implement search logic here
@@ -155,7 +160,7 @@ children: [
                         _buildChatItem(
                           context,
                           'assets/david.png',
-                          'Robert Olivdigo',
+                          'Shakib Imtiaz',
                           'Yes sure! I can do',
                           '10:27 PM',
                           Colors.purpleAccent,
@@ -255,15 +260,16 @@ children: [
                 currentIndex: 0, // Adjust this as needed
                 items: [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.chat_bubble, size: 24.sp), // Responsive icon size
+
+                    icon: Image.asset('assets/All.png', height: 25.h,), // Responsive icon size
                     label: 'All(96)',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.notifications, size: 24.sp),
+                    icon: Image.asset('assets/AI.png', height: 25.h,),
                     label: 'All(21)',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.person, size: 24.sp),
+                     icon: Image.asset('assets/Person.png', height: 25.h,),
                     label: 'Mine(52)',
                   ),
                 ],
@@ -450,6 +456,20 @@ children: [
     String time,
     Color statusColor,
     IconData statusIcon,
+  ) {return GestureDetector(
+  onTap: () {
+    Get.toNamed('/chating');
+  },
+  child: Padding(
+    padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w), // Responsive padding
+    child: Row(
+      children: [
+        // Avatar
+        CircleAvatar(
+          backgroundImage: AssetImage(avatarPath),
+          radius: 25.r, // Responsive avatar size
+        ),
+        SizedBox(width: 12.w), // Responsive space between avatar and content
     String image, 
   ) {return GestureDetector(
   onTap: () {
@@ -505,7 +525,105 @@ children: [
                 ],
               ),
               // Last message text
+        // Name, last message, and badges
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Row with Name and Status Badges
               Row(
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12.sp, // Responsive text
+                    ),
+                  ),
+                  SizedBox(width: 5.w), // Space between name and badge
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h), // Badge padding
+                    decoration: BoxDecoration(
+                      color: Colors.orange[100], // Badge background color
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.circle, color: Colors.orange, size: 10.sp), // Badge icon
+                        SizedBox(width: 2.w),
+                        Text(
+                          'Issac', // Dynamic badge content
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              // Last message text
+              Row(
+                children: [
+                  Icon(Icons.done_all),
+                  SizedBox(width: 3),
+                  Text(
+                    _getFirstTwoWords(lastMessage),
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.grey[600], // Grey color for last message
+                    ),
+                    maxLines: 1, // Limit message to 1 line
+                    overflow: TextOverflow.ellipsis, // Add ellipsis if text is too long
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(width: 8.w), // Space between text and time/status icons
+        // Time and Status Icons
+        Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
+                  decoration: BoxDecoration(
+                    color: Colors.green[100], // Background color for the status badge
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Text(
+                    '16h', // Dynamic status duration
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.green,
+                    ),
+                  ),
+                ),
+                Text(
+                  time,
+                  style: TextStyle(color: Colors.grey, fontSize: 12.sp), // Time text
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(Icons.call_received, color: statusColor, size: 17.sp),
+                Icon(statusIcon, color: statusColor, size: 17.sp),
+              ],
+            ),
+          ],
+        ),
+        SizedBox(width: 12.w), // Space between time and action icon
+        // Action Icon (e.g., WhatsApp)
+        // Responsive action icon
+      ],
+    ),
+  ),
+);
                 children: [
                   Icon(Icons.done_all),
                   SizedBox(width: 3),
