@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import flutter_screenutil
+import 'package:massenger_app3/app/core/app_sizes.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -10,6 +11,7 @@ void main() {
       minTextAdapt: true, // Allows text scaling
       splitScreenMode: true, // Adjust for split-screen scenarios
       builder: (context, child) {
+      AppSizes().init(context);
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: "Application",

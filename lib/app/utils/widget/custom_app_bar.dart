@@ -10,33 +10,57 @@ import 'package:get/get.dart';
 // Define a reusable AppBar widget
 PreferredSizeWidget buildCustomAppBar(BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false,
     backgroundColor: Colors.white,
     elevation: 0,
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back, color: Colors.black),
-      onPressed: () {
-        Get.toNamed('/chatting-list'); // Handle back navigation
-      },
-    ),
-    title: Row(
+  
+    
+//     IconButton(
+//   padding: EdgeInsets.zero, // Remove default padding
+//   icon: const Icon(Icons.arrow_back, color: Colors.black,size: 19,),
+//   onPressed: () {
+//     Get.toNamed('/chatting-list'); // Handle back navigation
+//   },
+// ),
+
+    title: Column(
       children: [
-        // Profile Picture and Name
-        CircleAvatar(
-          radius: MediaQuery.of(context).size.height * 0.025, // Responsive radius based on screen height
-          backgroundImage: const AssetImage('assets/1.png'), // Add your image path here
-        ),
-        SizedBox(width: 8), // Small fixed width for better spacing control
-        Expanded(
-          child: Text(
-            'Micheal David',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis, 
-              fontSize: 12.sp, // Ensure text doesn't overflow
-            ),
+        Row(
+          children: [
+        
+          InkWell(
+          onTap: () {
+        Get.back(); // Navigate back to the previous page
+          },
+          child: const Icon(
+        Icons.arrow_back,
+        color: Colors.black,
+        size: 19,
           ),
         ),
+        
+             SizedBox(width: 8), 
+            // Profile Picture and Name
+            CircleAvatar(
+              radius: MediaQuery.of(context).size.height * 0.020, // Responsive radius based on screen height
+              backgroundImage: const AssetImage('assets/1.png'), // Add your image path here
+            ),
+            SizedBox(width: 8), // Small fixed width for better spacing control
+            Expanded(
+              child: Text(
+                maxLines: 2,
+                'Micheal David',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  overflow: TextOverflow.ellipsis, 
+                  fontSize: 12.sp, // Ensure text doesn't overflow
+                ),
+              ),
+            ),
+          ],
+        ),
+        
       ],
     ),
     actions: [
@@ -51,7 +75,7 @@ PreferredSizeWidget buildCustomAppBar(BuildContext context) {
                 // Handle Assign to AI action
               },
               style: TextButton.styleFrom(
-                backgroundColor: Colors.pink,
+                backgroundColor: Color(0xffEA4B98),
                 padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 4.h), // Slightly reduced padding
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -102,7 +126,8 @@ PreferredSizeWidget buildCustomAppBar(BuildContext context) {
           ),
         ),
       ),
-      SizedBox(width: 8.w), // Reduced final padding
+      SizedBox(width: 8.w), 
+      // Reduced final padding
     ],
   );
 }

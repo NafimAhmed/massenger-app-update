@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:massenger_app3/app/modules/chattingList/custom_chatting_list/custom_chatting_list_view.dart';
 import 'package:massenger_app3/app/routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
@@ -57,7 +58,7 @@ class LoginView extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 90.h), // Responsive vertical spacing
+                      SizedBox(height: 150.h), // Responsive vertical spacing
                       Text(
                         'Sign In',
                         style: GoogleFonts.montserrat(
@@ -199,7 +200,8 @@ class LoginView extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             // Navigate to Chatting List
-                            Get.offNamed('/chatting-list');
+                            // Get.offNamed('/chatting-list');
+                            Get.to(CustomChattingListView());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFFEA4B98), // Background color
@@ -223,6 +225,7 @@ class LoginView extends StatelessWidget {
                     ],
                   ),
                 ),
+              
                 Center(
                   child: RichText(
                     text: TextSpan(
@@ -231,7 +234,7 @@ class LoginView extends StatelessWidget {
                         fontSize: 14.sp, // Responsive font size
                       ),
                       children: <TextSpan>[
-                        const TextSpan(text: "Don't have an account? "),
+                        const TextSpan(text: "Don't have an account? ",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
                         TextSpan(
                           text: "Sign up",
                           style: GoogleFonts.montserrat(
@@ -243,7 +246,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h), // Responsive vertical spacing
+               // SizedBox(height: .h), // Responsive vertical spacing
               ],
             ),
           ),
@@ -257,8 +260,8 @@ class LoginView extends StatelessWidget {
       
           // Stack for logos positioned at the right corner
           Positioned(
-            right: -30.w, // Responsive positioning
-            top: -10.h,
+            right: -34.w, // Responsive positioning
+            top: -16.h,
             child: Stack(
               alignment: Alignment.center,
               children: [
@@ -273,8 +276,9 @@ class LoginView extends StatelessWidget {
                 ),
                 // Image at the center of the circle
                 Image.asset(
+                
                   'assets/logo.png', // Your image path here
-                  width: 120.w, // Responsive image width
+                  width: 100.w, // Responsive image width
                   height: 125.h, // Responsive image height
                   fit: BoxFit.contain,
                 ),

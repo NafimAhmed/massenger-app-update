@@ -14,18 +14,33 @@ class ContactDetailView extends GetView<ContactDetailController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0, // Set elevation of AppBar to 0 to prevent its own shadow
           title: Text(
             'Contact Details',
             style: GoogleFonts.montserrat(
-              fontSize: 20,
+              fontSize: 19,
               fontWeight: FontWeight.w500,
             ),
           ),
           centerTitle: true,
+          backgroundColor: Colors.white, // Optional: Set background color
         ),
+      
+
+
+
+
+
+
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+
+            Container(height: 1,width: Get.width,color: Colors.grey,),
+
+            SizedBox(height: 10,),
+
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,6 +66,7 @@ class ContactDetailView extends GetView<ContactDetailController> {
               style: GoogleFonts.montserrat(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
+                color: Color(0xffA8A8A8)
               ),
             ),
             SizedBox(height: 5,),
@@ -89,6 +105,7 @@ class ContactDetailView extends GetView<ContactDetailController> {
                 style: GoogleFonts.montserrat(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
+                  color: Color(0xff5C5C5C)
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
